@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <esp_now.h>
 #include <WiFi.h>
-
+//MAC do RecptorLocal:
 uint8_t broadcastAddress[] = {0xEC, 0x64, 0xC9, 0x86, 0x1D, 0xE1};
 
 struct DHTData
@@ -68,9 +68,6 @@ void setup()
 
 	Serial.print("MAC deste dispositivo: ");
 	Serial.println(WiFi.macAddress());
-
-	pinMode(LED_BUILTIN, OUTPUT);
-	digitalWrite(LED_BUILTIN, HIGH);
 
 	WiFi.mode(WIFI_STA);
 
