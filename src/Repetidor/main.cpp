@@ -42,10 +42,10 @@ void OnDataRecv(uint8_t *mac, uint8_t *incomingData, uint8_t len)
 	Serial.println();
 	Serial.print("Bytes recebidos: ");
 	Serial.println(len);
-	Serial.print("String: ");
+	Serial.print("Temperatura: ");
 	Serial.println(dhtData.temperature);
-	Serial.print("String: ");
-	Serial.println(dhtData.temperature);
+	Serial.print("Umidade: ");
+	Serial.println(dhtData.humidity);
 
 	esp_err_t result = esp_now_send(
 		 broadcastAddress,
