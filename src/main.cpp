@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <esp_now.h>
 #include <WiFi.h>
-
+//MAC do RecptorLocal:
 uint8_t broadcastAddress[] = {0xEC, 0x64, 0xC9, 0x86, 0x1D, 0xE1};
 
 struct DHTData
@@ -42,10 +42,10 @@ void OnDataRecv(uint8_t *mac, uint8_t *incomingData, uint8_t len)
 	Serial.println();
 	Serial.print("Bytes recebidos: ");
 	Serial.println(len);
-	Serial.print("String: ");
+	Serial.print("Temperatura: ");
 	Serial.println(dhtData.temperature);
-	Serial.print("String: ");
-	Serial.println(dhtData.temperature);
+	Serial.print("Umidade: ");
+	Serial.println(dhtData.humidity);
 
 	esp_err_t result = esp_now_send(
 		 broadcastAddress,
@@ -68,9 +68,6 @@ void setup()
 
 	Serial.print("MAC deste dispositivo: ");
 	Serial.println(WiFi.macAddress());
-
-	pinMode(LED_BUILTIN, OUTPUT);
-	digitalWrite(LED_BUILTIN, HIGH);
 
 	WiFi.mode(WIFI_STA);
 
