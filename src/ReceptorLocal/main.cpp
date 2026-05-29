@@ -17,24 +17,20 @@ void OnDataRecv(uint8_t *mac, uint8_t *incomingData, uint8_t len)
 	Serial.println();
 	Serial.print("Bytes recebidos: ");
 	Serial.println(len);
-	Serial.print("String: ");
+	Serial.print("Temperatura: ");
 	Serial.println(dhtData.temperature);
-	Serial.print("String: ");
+	Serial.print("Umidade: ");
 	Serial.println(dhtData.humidity);
 
-	if (Serial2.available())
-	{
-		Serial2.print(dhtData.temperature);
-		Serial2.print(",");
-		Serial2.println(dhtData.humidity);
-	}
+	Serial2.print(dhtData.temperature);
+	Serial2.print(",");
+	Serial2.println(dhtData.humidity);
 }
 
 void setup()
 {
 	Serial.begin(115200);
 	Serial2.begin(115200, SERIAL_8N1, RX, TX);
-	pinMode(TX, OUTPUT);
 
 	Serial.print("MAC deste dispositivo: ");
 	Serial.println(WiFi.macAddress());
