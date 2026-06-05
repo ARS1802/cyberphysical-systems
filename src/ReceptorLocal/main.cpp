@@ -6,8 +6,8 @@
 
 struct DHTData
 {
-	char temperature[65];
 	char humidity[65];
+	char temperature[65];
 };
 DHTData dhtData;
 
